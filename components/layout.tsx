@@ -8,7 +8,9 @@ import styles from './layout.module.css';
 const name = 'Cotton Han';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }) {
+export default function Layout(props: { children: React.ReactNode; home?: boolean }) {
+  const { children, home } = props;
+
   return (
     <div className={styles.container}>
       <Head>
