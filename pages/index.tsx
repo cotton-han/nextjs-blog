@@ -8,7 +8,15 @@ import Layout, { siteTitle } from '../components/layout';
 
 import utilStyles from '../styles/utils.module.css';
 
-export default function Home(props) {
+import type { GetStaticProps } from 'next';
+
+export default function Home(props: {
+  allPostsData: {
+    date: string;
+    title: string;
+    id: string;
+  }[];
+}) {
   const { allPostsData } = props;
 
   return (
@@ -43,11 +51,11 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = () => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
     },
   };
-}
+};
